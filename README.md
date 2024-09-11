@@ -12,6 +12,7 @@ The objective of this project is to automate the data ingestion and transformati
 
 - **AWS Glue DataBrew** was used for initial data validation, checking for inconsistencies, and basic cleaning of the raw data.
 - **AWS Glue** was employed to transform the data, ensuring data quality through operations such as removing duplicates, handling missing values, and performing schema validation.
+![ETL Process](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/ETL.png)
 
 ### Dataset:
 Source: Application, Enrollment, and Withdrawal data for the Registrar’s office.
