@@ -34,6 +34,8 @@ The initial data was stored in its original .xlsx format, representing unprocess
 AWS Glue DataBrew was used for initial data validation, checking for inconsistencies, and basic cleaning.
 AWS Glue was employed to transform the data, where data quality transformations like removing duplicates, handling missing values, and schema validation were performed.
 
+![drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/dsvvds.png)
+
 ###### Transformation Steps:
 - **Step 1**: Detect sensitive data within the dataset and validate the overall data quality.
 - **Step 2**: Filter out invalid records such as applications with missing critical data fields.
