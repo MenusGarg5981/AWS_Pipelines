@@ -9,6 +9,9 @@ Registrar’s Office Applications, Enrollments, and Withdrawals Pipeline Using A
 ### Objective:
 The objective of this project is to automate the data ingestion and transformation process for the registrar’s office data. The ultimate goal is to query, analyze, and visualize key metrics like application completion rates, enrollment numbers, and withdrawals to help improve the decision-making process.
 
+![goal_description](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Picture1.png)
+
+
 ### ETL (Extract, Transform, Load) Process Using AWS Glue:
 
 - **AWS Glue DataBrew** was used for initial data validation, checking for inconsistencies, and basic cleaning of the raw data.
