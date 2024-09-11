@@ -2,6 +2,7 @@
 ### Project Description:
 This project focuses on creating a data ingestion and processing pipeline using various AWS services such as S3, Glue, Athena, and external tools like Excel (due to limitations in the free AWS tier). The pipeline aims to automate the ingestion, transformation, and analysis of the registrar’s office data for tracking applications, withdrawals, and enrollments. The pipeline was built to manage the data across different zones—Landing, Raw, and Curated—and generate insights like application completion rates for multiple academic years (2022 and 2023).
 
+
 ### Project Title:
 Registrar’s Office Applications, Enrollments, and Withdrawals Pipeline Using AWS Services
 
@@ -12,7 +13,9 @@ The objective of this project is to automate the data ingestion and transformati
 
 - **AWS Glue DataBrew** was used for initial data validation, checking for inconsistencies, and basic cleaning of the raw data.
 - **AWS Glue** was employed to transform the data, ensuring data quality through operations such as removing duplicates, handling missing values, and performing schema validation.
+
 ![ETL Process](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/ETL.png)
+
 
 ### Dataset:
 Source: Application, Enrollment, and Withdrawal data for the Registrar’s office.
