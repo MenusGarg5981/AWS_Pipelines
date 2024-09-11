@@ -57,10 +57,13 @@ LIMIT 10;
 - This SQL query was run in Athena to extract key metrics such as Application Completion Rates (ACR) and enrollment data for the years 2022 and 2023.
 - The results of these queries provided insights like the total number of applications, enrollment patterns, and the comparison of completion rates between years.
 
+![SQL Athena Query](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/SQL%20Athena.png)
+
 ###### 4. Visualization:
 
 - Since Amazon QuickSight was unavailable in the free tier of AWS, the results of Athena queries were exported and visualized in Excel.
 - Example Visualization: A bar chart was created to show the application completion rate for 2022 (high) and 2023 (low). The visualization helped to analyze the drop in completion rates and identify potential causes (e.g., student feedback, procedural changes).
+
 
 #### Tools and Technologies:
 **Amazon S3:** Used for storing datasets at various stages—Landing, Raw, and Curated.
