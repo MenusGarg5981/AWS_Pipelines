@@ -8,7 +8,7 @@ Registrar’s Office Applications, Enrollments, and Withdrawals Pipeline Using A
 
 ### Objective:
 The objective of this project is to automate the data ingestion and transformation process for the registrar’s office data. The ultimate goal is to query, analyze, and visualize key metrics like application completion rates, enrollment numbers, and withdrawals to help improve the decision-making process.
-
+Figure below explains the goal of this project as this this a data wrangling project with descriptive metrics.
 ![goal_description](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Picture1.png)
 
 
@@ -16,7 +16,7 @@ The objective of this project is to automate the data ingestion and transformati
 
 - **AWS Glue DataBrew** was used for initial data validation, checking for inconsistencies, and basic cleaning of the raw data.
 - **AWS Glue** was employed to transform the data, ensuring data quality through operations such as removing duplicates, handling missing values, and performing schema validation.
-
+Figure of ETL pipeline from Visual ETL of AWS Glue service
 ![ETL Process](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/ETL.png)
 
 
@@ -36,7 +36,7 @@ The initial data was stored in its original .xlsx format, representing unprocess
 
 AWS Glue DataBrew was used for initial data validation, checking for inconsistencies, and basic cleaning.
 AWS Glue was employed to transform the data, where data quality transformations like removing duplicates, handling missing values, and schema validation were performed.
-
+Figure below shows the steps for final calculation of ACR i.e. Application Completion Rate
 ![drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/dsvvds.png)
 
 ###### Transformation Steps:
@@ -60,6 +60,7 @@ LIMIT 10;
 - This SQL query was run in Athena to extract key metrics such as Application Completion Rates (ACR) and enrollment data for the years 2022 and 2023.
 - The results of these queries provided insights like the total number of applications, enrollment patterns, and the comparison of completion rates between years.
 
+Figure below shows the results of SQL query in Athena
 ![SQL Athena Query](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/SQL%20Athena.png)
 
 ###### 4. Visualization:
