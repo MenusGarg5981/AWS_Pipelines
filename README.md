@@ -1,4 +1,4 @@
-## Data Wrangling Project
+## Data Wrangling Project 1
 ### Project Description:
 This project focuses on creating a data ingestion and processing pipeline using various AWS services such as S3, Glue, Athena, and external tools like Excel (due to limitations in the free AWS tier). The pipeline aims to automate the ingestion, transformation, and analysis of the registrar’s office data for tracking applications, withdrawals, and enrollments. The pipeline was built to manage the data across different zones—Landing, Raw, and Curated—and generate insights like application completion rates for multiple academic years (2022 and 2023).
 
