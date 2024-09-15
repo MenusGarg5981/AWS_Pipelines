@@ -1,45 +1,38 @@
-## Data Wrangling Project 1
-### Project Description:
+# Data Wrangling Project 1
+## Project Description:
 This project focuses on creating a data ingestion and processing pipeline using various AWS services such as S3, Glue, Athena, and external tools like Excel (due to limitations in the free AWS tier). The pipeline aims to automate the ingestion, transformation, and analysis of the registrar’s office data for tracking applications, withdrawals, and enrollments. The pipeline was built to manage the data across different zones—Landing, Raw, and Curated—and generate insights like application completion rates for multiple academic years (2022 and 2023).
-
-
-### Project Title:
+## Project Title:
 Registrar’s Office Applications, Enrollments, and Withdrawals Pipeline Using AWS Services
-
-### Objective:
+## Objective:
 The objective of this project is to automate the data ingestion and transformation process for the registrar’s office data. The ultimate goal is to query, analyze, and visualize key metrics like application completion rates, enrollment numbers, and withdrawals to help improve the decision-making process.
 Figure below explains the goal of this project as this this a data wrangling project with descriptive metrics.
 ![goal_description](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Picture1.png)
 
 
-### ETL (Extract, Transform, Load) Process Using AWS Glue:
-
+## ETL (Extract, Transform, Load) Process Using AWS Glue:
 - **AWS Glue DataBrew** was used for initial data validation, checking for inconsistencies, and basic cleaning of the raw data.
 - **AWS Glue** was employed to transform the data, ensuring data quality through operations such as removing duplicates, handling missing values, and performing schema validation.
 Figure of ETL pipeline from Visual ETL of AWS Glue service
 ![ETL Process](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/ETL.png)
-
-
-### Dataset:
+## Dataset:
 Source: Application, Enrollment, and Withdrawal data for the Registrar’s office.
 Data Zones:
 - **Zone 1**: _Landing Zone:_ Data is ingested in its raw format (i.e., .xlsx files) from different sources.
 - **Zone 2**: _Raw Zone:_ Data is converted to .csv format and partially processed for further cleaning and validation.
 - **Zone 3**: _Curated Zone:_ Cleaned and structured data is stored here, ready for analysis and reporting.
-
-### Methodology:
-###### 1. Data Ingestion:
+## Methodology:
+### 1. Data Ingestion:
 
 The raw data containing the registrar’s office applications, enrollments, and withdrawals was ingested into Amazon S3 under the Landing Zone.
 The initial data was stored in its original .xlsx format, representing unprocessed, raw data.
-###### 2. ETL (Extract, Transform, Load) Process Using AWS Glue:
+### 2. ETL (Extract, Transform, Load) Process Using AWS Glue:
 
 AWS Glue DataBrew was used for initial data validation, checking for inconsistencies, and basic cleaning.
 AWS Glue was employed to transform the data, where data quality transformations like removing duplicates, handling missing values, and schema validation were performed.
 Figure below shows the steps for final calculation of ACR i.e. Application Completion Rate
 ![drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/dsvvds.png)
 
-###### Transformation Steps:
+### Transformation Steps:
 - **Step 1**: Detect sensitive data within the dataset and validate the overall data quality.
 - **Step 2**: Filter out invalid records such as applications with missing critical data fields.
 - **Step 3**: Perform schema transformations to normalize the data, aligning it with the predefined structure and making it ready for querying.
@@ -47,7 +40,7 @@ Figure below shows the steps for final calculation of ACR i.e. Application Compl
   
 The ETL pipeline's steps were visually orchestrated using AWS Glue Studio, where each step was executed in sequence to ensure the flow from raw to curated data (refer to the ETL pipeline visualization).
 
-###### 3. Data Querying Using Amazon Athena:
+### 3. Data Querying Using Amazon Athena:
 
 Amazon Athena was configured to query the curated data stored in S3.
 Simple SQL Query:
@@ -63,26 +56,26 @@ LIMIT 10;
 Figure below shows the results of SQL query in Athena
 ![SQL Athena Query](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/SQL%20Athena.png)
 
-###### 4. Visualization:
+### 4. Visualization:
 
 - Since Amazon QuickSight was unavailable in the free tier of AWS, the results of Athena queries were exported and visualized in Excel.
 - Example Visualization: A bar chart was created to show the application completion rate for 2022 (high) and 2023 (low). The visualization helped to analyze the drop in completion rates and identify potential causes (e.g., student feedback, procedural changes).
 
 
-#### Tools and Technologies:
+## Tools and Technologies:
 **Amazon S3:** Used for storing datasets at various stages—Landing, Raw, and Curated.
 **AWS Glue:** Employed to build ETL pipelines for cleaning, transforming, and structuring the data.
 **AWS Glue DataBrew:** Simplified the data cleaning process with its visual interface.
 **Amazon Athena:** SQL queries were executed on the cleaned data stored in S3 for analysis.
 **Excel:** Visualization of key metrics such as Application Completion Rate (ACR) due to unavailability of Amazon QuickSight in the free AWS version.
 
-#### Deliverables:
+## Deliverables:
 **ETL Pipeline:** A fully functional ETL pipeline using AWS Glue and DataBrew to process the registrar’s office data.
 **Athena Query:** SQL queries executed to generate key insights like Application Completion Rate (ACR).
 **Visualization:** Graphical representations of the results, showing trends such as application and enrollment rates across different academic years.
 
-#### Detailed Explanation of AWS Services and Pipeline Steps:
-###### 1. Amazon S3:
+## Detailed Explanation of AWS Services and Pipeline Steps:
+### 1. Amazon S3:
 
 - Landing Zone: Raw .xlsx files containing registrar’s office data (e.g., applications, withdrawals, and enrollments) were uploaded to S3. This zone is used to hold unprocessed data.
 
@@ -90,22 +83,122 @@ Figure below shows the results of SQL query in Athena
 
 - Curated Zone: The final cleaned and processed data is stored in S3 for querying and analysis. This zone ensures that only high-quality, validated data is used for reporting purposes.
 
-###### 2. AWS Glue:
+### 2. AWS Glue:
 - Glue was used to build the ETL pipeline, automating the data flow from raw to curated. Each step, such as removing invalid records or restructuring the data schema, was performed using Glue jobs. Glue DataBrew played a crucial role in initial data cleaning, allowing visual identification of errors and quick fixes.
 
-###### 3. Amazon Athena: 
+### 3. Amazon Athena: 
 - Athena was employed to query the processed data stored in S3. It allowed direct querying without moving the data into databases. A simple SQL query helped extract key insights, such as Application Completion Rate (ACR) for 2022 and 2023, and provided a basis for further visual analysis.
 
-###### 4. Excel for Visualization:
+### 4. Excel for Visualization:
 - Due to QuickSight limitations in the free tier, the query results from Athena were exported to Excel for visualization.
 A bar chart was created, showing a significant drop in the Application Completion Rate (ACR) from 2022 to 2023. This helped identify trends and areas needing attention.
 
 
-### Visualization Example:
+#### Visualization Example:
 - Application Completion Rate (ACR) for 2022: ~90%
 - Application Completion Rate (ACR) for 2023: ~30%
 - A visual comparison using a bar chart showed a significant drop in the completion rates, providing insights for further investigation.
-### Bucket Paths:
+#### Bucket Paths:
 - Landing Zone Path: registraroffice/enrollwithdraw/Landing
 - Raw Zone Path: registraroffice/enrollwithdraw/Raw
 - Curated Zone Path: registraroffice/enrollwithdraw/Curated
+
+# Comprehensive AWS Data Protection, Governance, and Monitoring System
+
+## Project Description
+
+This project aimed to create a robust **data protection**, **governance**, and **monitoring system** using AWS services. It was designed to handle sensitive data across multiple environments, enforce access controls, and ensure compliance with organizational security requirements. 
+
+Through the use of **AWS IAM**, **AWS KMS**, **AWS Glue**, **AWS CloudWatch**, and **AWS CloudTrail**, I implemented security protocols, established data governance processes, and monitored both resource usage and user activities effectively.
+
+The project was divided into three key phases:
+
+- **Data Protection**: Implementing encryption, access control policies, and security measures to safeguard data.
+- **Data Governance**: Establishing rules and automation to ensure data quality, compliance, and proper handling of sensitive information.
+- **Data Monitoring**: Continuous tracking of resource usage and user activities to detect anomalies and ensure accountability.
+
+Each phase leveraged a combination of AWS services, ensuring data encryption, fine-grained access control, detailed user activity tracking, and assurance of data quality across the system.
+
+## Objective:
+
+The primary objective was to develop an AWS-based system that ensures:
+
+- **Data Protection**: Strong encryption and access management for sensitive data.
+- **Data Governance**: Rigorous control of data quality, handling sensitive data like Personally Identifiable Information (PII), and enforcing data management rules through automation.
+- **Data Monitoring**: Continuous monitoring of resource usage, billing, and user activities to detect anomalies and ensure accountability.
+
+The project focused on automating these processes wherever possible to reduce manual intervention and improve efficiency in managing AWS infrastructure.
+
+
+## Dataset:
+
+The datasets used in this project included:
+
+- **CSV files** stored in S3 buckets, representing raw and processed data. These datasets were used to test encryption, data governance, and data quality evaluation in the AWS Glue pipeline.
+- **Log data** generated by AWS CloudTrail to monitor user activities such as log-ins, resource modifications, and API calls.
+
+The S3 buckets were divided into zones:
+
+- **Raw Zone**: Storage for unprocessed datasets.
+- **Trusted Zone**: Storage for validated, cleaned data after processing.
+- **Backup Bucket**: A secondary S3 bucket used for replication and versioning to ensure data redundancy and disaster recovery.
+
+
+## Methodology:
+
+### 1. Data Protection:
+- **AWS IAM** was used to define fine-grained access controls through roles, policies, and user groups. The root user had full administrative access, while lab roles were assigned to manage access to S3 and KMS resources.
+- **AWS KMS** was implemented to generate symmetric encryption keys. These keys were used for encrypting and decrypting sensitive data stored in S3 buckets. Permissions for key management (create, delete, use) were carefully assigned using IAM roles.
+
+### 2. Data Governance:
+- **AWS Glue** was used to build an ETL pipeline to detect sensitive data and enforce governance policies. The ETL pipeline started by loading raw data from the S3 bucket’s raw zone, then transforming and evaluating the data for sensitive information such as PII.
+- I implemented **data masking** and privacy checks by configuring AWS Glue to detect up to **256 types of PII**.
+- **Data quality checks** were enforced by setting thresholds for rules like completeness and uniqueness. These rules helped validate the quality of data, ensuring it met the required standards before being stored in the trusted zone.
+- **Replication rules** were applied to ensure that data from the primary S3 bucket was automatically replicated to a secondary backup bucket. **Versioning** was enabled to maintain multiple versions of files for disaster recovery.
+
+### 3. Data Monitoring:
+- **AWS CloudWatch** was used to set up a monitoring dashboard. This dashboard displayed key metrics related to S3 usage (e.g., number of objects, storage capacity) and billing metrics to track costs.
+- **CloudWatch Alarms** were created to send email notifications if certain thresholds were exceeded, such as when billing charges reached $40. Alarms were configured to monitor resource utilization and trigger appropriate actions if necessary.
+- **AWS CloudTrail** was used to track user activities, providing a detailed log of events such as API calls, user log-ins, and resource modifications. Logs were stored securely in an S3 bucket, with additional encryption applied to ensure data protection. CloudTrail was essential for maintaining accountability and transparency in the AWS environment.
+
+### Automation:
+Automation was a key feature of this project. AWS Glue pipelines were scheduled using the **AWS Schedule** feature to automatically run data governance processes on a weekly basis. The scheduling process ensured consistent and timely execution of data quality checks, sensitive data detection, and data replication tasks.
+
+
+
+## Tools and Technologies:
+
+- **AWS IAM**: Used for managing user access, roles, and policies to control who can perform actions on AWS resources.
+- **AWS KMS**: Utilized to generate and manage encryption keys for securing sensitive data.
+- **AWS S3**: Primary storage for raw, processed, and log datasets. S3 was used in conjunction with replication and versioning for data protection and disaster recovery.
+- **AWS Glue**: Built an ETL pipeline for detecting sensitive data, managing data governance policies, and ensuring data quality.
+- **AWS CloudWatch**: Set up dashboards and alarms to monitor resource usage and billing metrics.
+- **AWS CloudTrail**: Recorded user activity and API calls, providing logs for security and compliance.
+- **Python**: Used in AWS Glue to define custom rules and logic for data quality checks and sensitive data detection.
+- **JSON/YAML**: Used for defining policies in AWS IAM and configurations in various AWS services.
+
+
+
+## Deliverables:
+
+### Data Protection System:
+- Created IAM roles and policies for secure access control.
+- Implemented encryption with KMS keys for sensitive data in S3.
+- Applied replication and versioning in S3 to ensure data redundancy and disaster recovery.
+
+### Data Governance Pipeline:
+- Designed an ETL pipeline in AWS Glue to detect sensitive data and evaluate data quality.
+- Set up automated workflows for data processing, including checks for completeness and uniqueness.
+- Enabled replication rules and versioning in S3 for backups and data recovery.
+
+### Data Monitoring System:
+- Built a CloudWatch dashboard to monitor S3 usage, billing metrics, and other key performance indicators.
+- Configured CloudWatch alarms to notify when certain thresholds (e.g., billing limits) were reached.
+- Set up CloudTrail to record user activity and track API calls for security auditing and compliance.
+- Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.
+
+
+
+ 
+
+
