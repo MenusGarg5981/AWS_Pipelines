@@ -1,4 +1,4 @@
-# Data Wrangling Project 1
+# Project #1: Data Wrangling 
 ## Project Description:
 This project focuses on creating a data ingestion and processing pipeline using various AWS services such as S3, Glue, Athena, and external tools like Excel (due to limitations in the free AWS tier). The pipeline aims to automate the ingestion, transformation, and analysis of the registrar’s office data for tracking applications, withdrawals, and enrollments. The pipeline was built to manage the data across different zones—Landing, Raw, and Curated—and generate insights like application completion rates for multiple academic years (2022 and 2023).
 ## Project Title:
@@ -61,7 +61,6 @@ Figure below shows the results of SQL query in Athena
 - Since Amazon QuickSight was unavailable in the free tier of AWS, the results of Athena queries were exported and visualized in Excel.
 - Example Visualization: A bar chart was created to show the application completion rate for 2022 (high) and 2023 (low). The visualization helped to analyze the drop in completion rates and identify potential causes (e.g., student feedback, procedural changes).
 
-
 ## Tools and Technologies:
 **Amazon S3:** Used for storing datasets at various stages—Landing, Raw, and Curated.
 **AWS Glue:** Employed to build ETL pipelines for cleaning, transforming, and structuring the data.
@@ -74,13 +73,18 @@ Figure below shows the results of SQL query in Athena
 **Athena Query:** SQL queries executed to generate key insights like Application Completion Rate (ACR).
 **Visualization:** Graphical representations of the results, showing trends such as application and enrollment rates across different academic years.
 
+### Timeline:
+
+- **Week 1**: Data ingestion into Amazon S3, organizing the raw data in the Landing Zone.
+- **Week 2-3**: Data cleaning and transformation using AWS Glue and Glue DataBrew, moving processed data to the Curated Zone.
+- **Week 4**: Data querying using Amazon Athena to extract key metrics like Application Completion Rate (ACR) for 2022 and 2023.
+- **Week 5**: Visualization of results in Excel, focusing on trends like application completion and enrollment rates.
+
+
 ## Detailed Explanation of AWS Services and Pipeline Steps:
 ### 1. Amazon S3:
-
 - Landing Zone: Raw .xlsx files containing registrar’s office data (e.g., applications, withdrawals, and enrollments) were uploaded to S3. This zone is used to hold unprocessed data.
-
 - Raw Zone: Data from the Landing Zone was transformed into .csv format and partially cleaned. This intermediate stage helps to perform further processing.
-
 - Curated Zone: The final cleaned and processed data is stored in S3 for querying and analysis. This zone ensures that only high-quality, validated data is used for reporting purposes.
 
 ### 2. AWS Glue:
@@ -103,7 +107,7 @@ A bar chart was created, showing a significant drop in the Application Completio
 - Raw Zone Path: registraroffice/enrollwithdraw/Raw
 - Curated Zone Path: registraroffice/enrollwithdraw/Curated
 
-# Comprehensive AWS Data Protection, Governance, and Monitoring System
+# Project #2: AWS Data Governance Framework
 
 ## Project Description
 
@@ -113,6 +117,7 @@ Through the use of **AWS IAM**, **AWS KMS**, **AWS Glue**, **AWS CloudWatch**, a
 
 The project was divided into three key phases:
 
+## Project Title: Comprehensive AWS Data Protection, Governance, and Monitoring System 
 - **Data Protection**: Implementing encryption, access control policies, and security measures to safeguard data.
 - **Data Governance**: Establishing rules and automation to ensure data quality, compliance, and proper handling of sensitive information.
 - **Data Monitoring**: Continuous tracking of resource usage and user activities to detect anomalies and ensure accountability.
@@ -198,6 +203,103 @@ Automation was a key feature of this project. AWS Glue pipelines were scheduled 
 - Stored logs in an encrypted S3 bucket with versioning enabled to maintain secure records of user actions.
 
 
+# Project 3: Descriptive analysis
+
+## Introduction
+This project focuses on analyzing the 311 inquiry volume data sourced from OpenData Vancouver under the Government and Finance theme. The 311 service is a vital communication channel connecting city residents with municipal services. By analyzing data from 2023 and 2024, the project aims to identify departments with unusually high or low inquiry volumes and investigate the usage patterns of different communication channels (e.g., Phone, Chat). This analysis offers valuable insights into service demand, department workloads, and communication efficiency, leading to improved resource allocation and enhanced city service management.
+
+## Project Title: Descriptive data analysis for 311 Inquiry Volume Data Analysis of Government and Finance
+
+**Dataset Link**: The dataset is publicly available on OpenData Vancouver and can be accessed [here](https://opendata.vancouver.ca/explore/?disjunctive.features&disjunctive.theme&disjunctive.keyword&disjunctive.data-owner&disjunctive.data-team&sort=modified&refine.theme=Government+and+finance).
+
+## Objective
+The key objectives of this analysis are:
+1. **Department Inquiry Volume Analysis**: Identify city departments with unusually high or low inquiry volumes in 2023 and 2024.
+2. **Channel Inquiry Usage Analysis**: Determine which communication channels were most or least used for public inquiries.
+
+This data-driven approach enhances public service delivery and optimizes resource allocation, ensuring that city services are effectively meeting public needs.
+
+## Dataset Description
+The dataset is provided by OpenData Vancouver and includes key fields such as:
+- **Department**: The city department responsible for handling each inquiry.
+- **Inquiry Type**: The type of public inquiry.
+- **Year**: The year in which the inquiry was recorded.
+- **Month**: The month the inquiry occurred.
+- **Channel**: The mode of communication used by the public (e.g., Phone, Chat).
+- **Number of Records**: The total volume of inquiries per department and channel.
+
+This dataset offers comprehensive insights into how city residents interact with municipal services and highlights areas that may require resource adjustment or service improvements.
+
+## Methodology
+
+### Data Analytical Question Formulation
+The analysis was guided by two key questions:
+- Which city departments received unusually high or low inquiry volumes in 2023 and 2024?
+- Which communication channels were most or least used for public inquiries?
+
+### Dataset Preparation
+The dataset was reviewed to ensure all necessary fields were included. This was followed by cleaning and organizing the data, including renaming columns for clarity. The data was split by year (2023 and 2024) and formatted for ingestion into Amazon S3.
+
+### Data Ingestion and Storage
+Data files for 2023 and 2024 were ingested into Amazon S3. A hierarchical folder structure was created for ease of management, with the data split into:
+- **Landing Zone**: Raw, unprocessed data.
+- **Raw Zone**: Data after initial processing.
+- **Curated Zone**: Cleaned and structured data, ready for analysis.
+
+### Data Cleaning and Structuring
+AWS Glue DataBrew was used to clean and structure the dataset. Null values were removed, and the data was normalized for consistency. Columns were renamed for better clarity, such as renaming "Department" to "Inquiry_department."
+
+### Data Pipeline Design
+A data pipeline was designed using AWS Glue to automate the ETL (Extract, Transform, Load) process. This pipeline ensured a seamless flow of raw data into structured data that was ready for analysis.
+
+### Data Analysis
+Amazon Athena was used to execute SQL queries on the cleaned data stored in Amazon S3. The focus of the analysis was to compute the **Departmental Inquiry Volume** and **Channel Inquiry Usage** for both 2023 and 2024. Metrics such as the total number of inquiries per department and the usage of each communication channel were computed.
+
+### Data Visualization
+Due to limited access to Amazon QuickSight, Excel was used to generate visual representations of the inquiry volumes and communication channel usage. These visualizations made it easier for stakeholders to interpret the data and identify trends in public service demands.
+
+### Data Publishing
+The final results were published on Amazon EC2, making them accessible to stakeholders and the public via virtual servers. This allowed for easy sharing and review of the project’s insights.
+
+## Tools and Technologies
+- **Amazon S3**: For storing and organizing the raw and cleaned datasets.
+- **AWS Glue DataBrew**: For automating data cleaning and structuring processes.
+- **Amazon Athena**: For querying and analyzing the cleaned data using SQL.
+- **Amazon EC2**: For publishing the project results on virtual servers, ensuring both internal and public access.
+- **Excel**: Used for data visualization due to limited access to Amazon QuickSight.
+
+## Deliverables
+1. **Cleaned and Structured Dataset**:  
+   The raw data from 2023 and 2024 was cleaned, structured, and stored as CSV files in Amazon S3, ready for future analysis.
+
+2. **Data Analysis Reports**:  
+   Detailed reports highlighting inquiry volumes by department and communication channel usage were generated, providing insights into public service interactions.
+
+3. **Data Visualizations**:  
+   Visual representations of inquiry volumes and communication channel usage were created using Excel, making the data more interpretable for stakeholders.
+
+4. **Published Data**:  
+   The final analysis results were published on Amazon EC2, allowing stakeholders easy access to review the project’s findings.
+
+## Timeline
+
+### Month 1: Dataset Preparation and Ingestion
+- **Week 1**: Dataset review and project objectives were established.
+- **Week 2**: Data ingestion into Amazon S3 was completed, and a folder structure was created for storing raw, processed, and curated data.
+- **Week 3**: AWS Glue DataBrew was used to clean and structure the dataset. The cleaning process involved normalizing data, removing null values, and renaming columns for better clarity.
+
+### Month 2: Data Structuring and Pipeline Design
+- **Week 4**: The structured data schema was finalized for both 2023 and 2024 datasets.
+- **Week 5**: A data pipeline was designed using AWS Glue to automate the ETL process, ensuring a seamless flow of raw data to the structured dataset.
+- **Week 6**: The pipeline was implemented, with data moving through extraction, transformation, and loading stages, ensuring that both 2023 and 2024 datasets were ready for analysis.
+
+### Month 3: Data Analysis, Visualization, and Publishing
+- **Week 7**: Data analysis was conducted using Amazon Athena, and key metrics such as departmental inquiry volumes and communication channel usage were computed.
+- **Week 8**: Data visualizations were generated in Excel to represent trends in inquiry volumes and channel usage.
+- **Week 9**: The results, including visual reports and analysis, were published on Amazon EC2, making the insights available for internal and public review.
+
+## Conclusion
+This project successfully analyzed the 311 inquiry volume data from 2023 and 2024, providing crucial insights into public interactions with city services. By identifying departments with unusually high or low inquiry volumes and analyzing communication channel usage, the city can optimize resource allocation and improve service delivery. The methodology and tools employed ensure that the analysis is scalable and reproducible, offering a solid foundation for future data-driven decisions in managing public services.
 
  
 
