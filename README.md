@@ -153,18 +153,40 @@ The S3 buckets were divided into zones:
 
 ### 1. Data Protection:
 - **AWS IAM** was used to define fine-grained access controls through roles, policies, and user groups. The root user had full administrative access, while lab roles were assigned to manage access to S3 and KMS resources.
+
+![IAM Role Configuration](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/IAM%20Role%20Configuration.png)
+![AWS S3 Buckets](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20S3%20Buckets.png)
+
+
 - **AWS KMS** was implemented to generate symmetric encryption keys. These keys were used for encrypting and decrypting sensitive data stored in S3 buckets. Permissions for key management (create, delete, use) were carefully assigned using IAM roles.
 
 ### 2. Data Governance:
 - **AWS Glue** was used to build an ETL pipeline to detect sensitive data and enforce governance policies. The ETL pipeline started by loading raw data from the S3 bucket’s raw zone, then transforming and evaluating the data for sensitive information such as PII.
 - I implemented **data masking** and privacy checks by configuring AWS Glue to detect up to **256 types of PII**.
+
+![AWS Glue ETL Data Quality Evaluation with Completeness](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20ETL%20Data%20Quality%20Evaluation%20with%20Completeness.png)
+![AWS Glue ETL Workflow](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20ETL%20Workflow.png)
+![AWS Glue Workflow Overview](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20Workflow%20Overview.png)
+
 - **Data quality checks** were enforced by setting thresholds for rules like completeness and uniqueness. These rules helped validate the quality of data, ensuring it met the required standards before being stored in the trusted zone.
 - **Replication rules** were applied to ensure that data from the primary S3 bucket was automatically replicated to a secondary backup bucket. **Versioning** was enabled to maintain multiple versions of files for disaster recovery.
 
+![S3 Replication Configuration](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/S3%20Replication%20Configuration.png)
+![Bucket Encryption Settings](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Bucket%20Encryption%20Settings.png)
+
 ### 3. Data Monitoring:
 - **AWS CloudWatch** was used to set up a monitoring dashboard. This dashboard displayed key metrics related to S3 usage (e.g., number of objects, storage capacity) and billing metrics to track costs.
+
+![Custom CloudWatch Dashboard for Monitoring](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Custom%20CloudWatch%20Dashboard%20for%20Monitoring.png)
+
+
 - **CloudWatch Alarms** were created to send email notifications if certain thresholds were exceeded, such as when billing charges reached $40. Alarms were configured to monitor resource utilization and trigger appropriate actions if necessary.
+
+  ![CloudWatch with Active Billing Alarm for Estimated Charges](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/CloudWatch%20with%20Active%20Billing%20Alarm%20for%20Estimated%20Charges.png)
+  
 - **AWS CloudTrail** was used to track user activities, providing a detailed log of events such as API calls, user log-ins, and resource modifications. Logs were stored securely in an S3 bucket, with additional encryption applied to ensure data protection. CloudTrail was essential for maintaining accountability and transparency in the AWS environment.
+
+![CloudTrail Configuration](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/CloudTrail%20Configuration.png)
 
 ### Automation:
 Automation was a key feature of this project. AWS Glue pipelines were scheduled using the **AWS Schedule** feature to automatically run data governance processes on a weekly basis. The scheduling process ensured consistent and timely execution of data quality checks, sensitive data detection, and data replication tasks.
