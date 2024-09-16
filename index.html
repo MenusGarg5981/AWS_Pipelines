@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Report</title>
+    <script src="pdf.js"></script>
+</head>
+<body>
+
+<h1>Graph Report</h1>
+
+<p>If the embedded viewer does not work, you can view the report directly by clicking the link below:</p>
+<a href="Graph_Report.pdf" target="_blank">View Graph Report (PDF)</a>
+
+<div id="pdfViewer" style="border: 1px solid #ddd; width: 100%; height: 600px;"></div>
+
+<script>
+  var url = 'Graph_Report.pdf';
+  var pdfjsLib = window['pdfjs-dist/build/pdf'];
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdf.worker.js';
+
+  pdfjsLib.getDocument(url).promise.then(function(pdf) {
+    pdf.getPage(1).then(function(page) {
+      var scale = 1.5;
+      var viewport = page.getViewport({ scale: scale });
+
+      var canvas = document.createElement('canvas');
+      var context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+
+      document.getElementById('pdfViewer').appendChild(canvas);
+
+      var renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+      page.render(renderContext);
+    });
+  });
+</script>
+
+</body>
+</html>
