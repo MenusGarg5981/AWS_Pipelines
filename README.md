@@ -250,6 +250,17 @@ The dataset is provided by OpenData Vancouver and includes key fields such as:
 - **Channel**: The mode of communication used by the public (e.g., Phone, Chat).
 - **Number of Records**: The total volume of inquiries per department and channel.
 
+| Column          | Data Type | Description                                             |
+|-----------------|-----------|---------------------------------------------------------|
+| Department      | String    | The department handling the inquiry.                    |
+| Type            | String    | The type of inquiry received.                           |
+| Year Month      | String    | The year and month when the inquiry was recorded.       |
+| Channel         | String    | The communication channel used for the inquiry.         |
+| Number of Records | Integer  | The total number of records associated with the inquiry. |
+| BI_ID           | Integer   | Unique identifier for each record.                      |
+| Year            | Integer   | The year extracted from 'Year Month'.                   |
+
+
 This dataset offers comprehensive insights into how city residents interact with municipal services and highlights areas that may require resource adjustment or service improvements.
 
 ## Methodology
@@ -268,6 +279,13 @@ Data files for 2023 and 2024 were ingested into Amazon S3. A hierarchical folder
 - **Raw Zone**: Data after initial processing.
 - **Curated Zone**: Cleaned and structured data, ready for analysis.
 
+| Zone Name    | Path                                                                                  | Description                                                                                                                                               |
+|--------------|----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Landing Zone | govtfinance/311inqvol/calls/2024/Landing/311inqvol-2024/3-1-1-inquiry-volume.xlsx      | This zone is used for managing the current data as it is ingested from various sources. The data in this zone is typically unprocessed and stored in its original format. |
+| Curated Zone | govtfinance/311inqvol/calls/2024/Curated                                               | This zone stores data that has been structured, cleaned, and optimized for analysis. The data in this zone is ready for reporting and querying. It has undergone various processes such as deduplication, normalization, and validation to ensure its quality and usefulness. |
+| Raw Zone     | govtfinance/311inqvol/calls/2024/Raw/311inqvol-2024/3-1-1-inquiry-volume.csv           | In this zone, the system generates CSV files that result from initial processing steps. These files may include raw outputs from data ingestion processes or other intermediate steps before the data is moved to the curated zone. |
+
+
 ### Data Cleaning and Structuring
 AWS Glue DataBrew was used to clean and structure the dataset. Null values were removed, and the data was normalized for consistency. Columns were renamed for better clarity, such as renaming "Department" to "Inquiry_department."
 
@@ -276,6 +294,22 @@ A data pipeline was designed using AWS Glue to automate the ETL (Extract, Transf
 
 ### Data Analysis
 Amazon Athena was used to execute SQL queries on the cleaned data stored in Amazon S3. The focus of the analysis was to compute the **Departmental Inquiry Volume** and **Channel Inquiry Usage** for both 2023 and 2024. Metrics such as the total number of inquiries per department and the usage of each communication channel were computed.
+
+| Year  | Dept                         | Channel                      |
+|-------|------------------------------|------------------------------|
+| **2023** | **Dept** | **Channel** |
+| **Table Name** | govtfinance_311inqvol_tabledept2023_menus | govtfinance_311inqvol_tablechnl2023_menus |
+| **Database Name** | govtfinance_311inqvol_databasedept2023_menus | govtfinance_311inqvol_databasechnl2023_menus |
+| **Column 1** | inquiry_department | inquiry_channel |
+| **Column 2** | total_inquiries_in_dept | total_inquiries_in_channel |
+| **Column 3** | deptpercuse | channelpercuse |
+| **2024** | **Dept** | **Channel** |
+| **Table Name** | govtfinance_311inqvol_tabledept2024_menus | govtfinance_311inqvol_tablechnl2024_menus |
+| **Database Name** | govtfinance_311inqvol_databasedept2024_menus | govtfinance_311inqvol_databasechnl2024_menus |
+| **Column 1** | inquiry_department | inquiry_channel |
+| **Column 2** | total_inquiries_in_dept | total_inquiries_in_channel |
+| **Column 3** | deptpercuse | channelpercuse |
+
 
 ### Data Visualization
 Due to limited access to Amazon QuickSight, Excel was used to generate visual representations of the inquiry volumes and communication channel usage. These visualizations made it easier for stakeholders to interpret the data and identify trends in public service demands.
