@@ -317,6 +317,8 @@ Due to limited access to Amazon QuickSight, Excel was used to generate visual re
 ### Data Publishing
 The final results were published on Amazon EC2, making them accessible to stakeholders and the public via virtual servers. This allowed for easy sharing and review of the project’s insights.
 
+[View Graph Report](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/index.html)
+
 ## Tools and Technologies
 - **Amazon S3**: For storing and organizing the raw and cleaned datasets.
 - **AWS Glue DataBrew**: For automating data cleaning and structuring processes.
