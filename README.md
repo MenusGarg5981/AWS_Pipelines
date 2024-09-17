@@ -230,6 +230,8 @@ Automation was a key feature of this project. AWS Glue pipelines were scheduled 
 ## Introduction
 This project focuses on analyzing the 311 inquiry volume data sourced from OpenData Vancouver under the Government and Finance theme. The 311 service is a vital communication channel connecting city residents with municipal services. By analyzing data from 2023 and 2024, the project aims to identify departments with unusually high or low inquiry volumes and investigate the usage patterns of different communication channels (e.g., Phone, Chat). This analysis offers valuable insights into service demand, department workloads, and communication efficiency, leading to improved resource allocation and enhanced city service management.
 
+![Drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Scheme%20Change.png)
+
 ## Project Title: Descriptive data analysis for 311 Inquiry Volume Data Analysis of Government and Finance
 
 **Dataset Link**: The dataset is publicly available on OpenData Vancouver and can be accessed [here](https://opendata.vancouver.ca/explore/?disjunctive.features&disjunctive.theme&disjunctive.keyword&disjunctive.data-owner&disjunctive.data-team&sort=modified&refine.theme=Government+and+finance).
@@ -238,6 +240,8 @@ This project focuses on analyzing the 311 inquiry volume data sourced from OpenD
 The key objectives of this analysis are:
 1. **Department Inquiry Volume Analysis**: Identify city departments with unusually high or low inquiry volumes in 2023 and 2024.
 2. **Channel Inquiry Usage Analysis**: Determine which communication channels were most or least used for public inquiries.
+
+![Goal](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Goal.png)
 
 This data-driven approach enhances public service delivery and optimizes resource allocation, ensuring that city services are effectively meeting public needs.
 
@@ -285,12 +289,27 @@ Data files for 2023 and 2024 were ingested into Amazon S3. A hierarchical folder
 | Curated Zone | govtfinance/311inqvol/calls/2024/Curated                                               | This zone stores data that has been structured, cleaned, and optimized for analysis. The data in this zone is ready for reporting and querying. It has undergone various processes such as deduplication, normalization, and validation to ensure its quality and usefulness. |
 | Raw Zone     | govtfinance/311inqvol/calls/2024/Raw/311inqvol-2024/3-1-1-inquiry-volume.csv           | In this zone, the system generates CSV files that result from initial processing steps. These files may include raw outputs from data ingestion processes or other intermediate steps before the data is moved to the curated zone. |
 
+![311 Inquiry Volume 2023 File in Landing Zone of S3](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/311%20Inquiry%20Volume%202023%20File%20in%20Landing%20Zone%20of%20S3.png)
 
 ### Data Cleaning and Structuring
 AWS Glue DataBrew was used to clean and structure the dataset. Null values were removed, and the data was normalized for consistency. Columns were renamed for better clarity, such as renaming "Department" to "Inquiry_department."
 
+![Data Overview for 311 Inquiry Volume Dataset in AWS DataBrew](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Overview%20for%20311%20Inquiry%20Volume%20Dataset%20in%20AWS%20DataBrew.png)
+
+![Data Sample Preview for 311 Inquiry Volume in AWS DataBrew](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Sample%20Preview%20for%20311%20Inquiry%20Volume%20in%20AWS%20DataBrew.png)
+
 ### Data Pipeline Design
 A data pipeline was designed using AWS Glue to automate the ETL (Extract, Transform, Load) process. This pipeline ensured a seamless flow of raw data into structured data that was ready for analysis.
+
+![drawio pipeline](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/drawio%20pipeline.png)
+
+![Data Preview](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20preview.png)
+
+![Data Preview of Inquiry Method Usage in AWS DataBrew](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Preview%20of%20Inquiry%20Method%20Usage%20in%20AWS%20DataBrew.png)
+
+![Scheme Change](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Scheme%20Change.png)
+
+![Data Transformation Workflow for 311 Inquiry Volume](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Transformation%20Workflow%20for%20311%20Inquiry%20Volume.png)
 
 ### Data Analysis
 Amazon Athena was used to execute SQL queries on the cleaned data stored in Amazon S3. The focus of the analysis was to compute the **Departmental Inquiry Volume** and **Channel Inquiry Usage** for both 2023 and 2024. Metrics such as the total number of inquiries per department and the usage of each communication channel were computed.
@@ -310,6 +329,7 @@ Amazon Athena was used to execute SQL queries on the cleaned data stored in Amaz
 | **Column 2** | total_inquiries_in_dept | total_inquiries_in_channel |
 | **Column 3** | deptpercuse | channelpercuse |
 
+![Query Results for Inquiry Channel Percentages](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Query%20Results%20for%20Inquiry%20Channel%20Percentages.png)
 
 ### Data Visualization
 Due to limited access to Amazon QuickSight, Excel was used to generate visual representations of the inquiry volumes and communication channel usage. These visualizations made it easier for stakeholders to interpret the data and identify trends in public service demands.
@@ -317,7 +337,11 @@ Due to limited access to Amazon QuickSight, Excel was used to generate visual re
 ### Data Publishing
 The final results were published on Amazon EC2, making them accessible to stakeholders and the public via virtual servers. This allowed for easy sharing and review of the project’s insights.
 
+![Channel Preference Comparison Between 2022 and 2023](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Channel%20Preference%20Comparison%20Between%202022%20and%202023.png)
+
 [View Graph Report](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/index.html)
+
+![Inquiry department data for the years 2023 and 2024](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/inquiry%20department%20data%20for%20the%20years%202023%20and%202024.png)
 
 ## Tools and Technologies
 - **Amazon S3**: For storing and organizing the raw and cleaned datasets.
