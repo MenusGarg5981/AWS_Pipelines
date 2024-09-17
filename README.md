@@ -333,12 +333,16 @@ Amazon Athena was used to execute SQL queries on the cleaned data stored in Amaz
 ### Data Visualization
 Due to limited access to Amazon QuickSight, Excel was used to generate visual representations of the inquiry volumes and communication channel usage. These visualizations made it easier for stakeholders to interpret the data and identify trends in public service demands.
 
+[Visualization graph for department use](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/dept-use-%25-2023-2024.pdf)
+
+[Visualization graph for channel use](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/channel-use-%25-2023-2024.pdf)
+
 ### Data Publishing
 The final results were published on Amazon EC2, making them accessible to stakeholders and the public via virtual servers. This allowed for easy sharing and review of the project’s insights.
 
 ![Channel Preference Comparison Between 2022 and 2023](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Channel%20Preference%20Comparison%20Between%202023%20and%202024.png)
 
-[View Graph Report](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/index.html)
+[HTML code used for visualization](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/index.html)
 
 ![Inquiry department data for the years 2023 and 2024](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/inquiry%20department%20data%20for%20the%20years%202023%20and%202024.png)
 
