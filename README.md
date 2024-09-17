@@ -115,7 +115,7 @@ This project aimed to create a robust **data protection**, **governance**, and *
 
 Through the use of **AWS IAM**, **AWS KMS**, **AWS Glue**, **AWS CloudWatch**, and **AWS CloudTrail**, I implemented security protocols, established data governance processes, and monitored both resource usage and user activities effectively.
 
-[Project Overview](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Drawio%20governance%201.png)
+![Project Overview](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Drawio%20governance%201.png)
 
 The project was divided into three key phases:
 
