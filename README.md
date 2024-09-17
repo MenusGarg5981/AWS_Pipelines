@@ -230,7 +230,7 @@ Automation was a key feature of this project. AWS Glue pipelines were scheduled 
 ## Introduction
 This project focuses on analyzing the 311 inquiry volume data sourced from OpenData Vancouver under the Government and Finance theme. The 311 service is a vital communication channel connecting city residents with municipal services. By analyzing data from 2023 and 2024, the project aims to identify departments with unusually high or low inquiry volumes and investigate the usage patterns of different communication channels (e.g., Phone, Chat). This analysis offers valuable insights into service demand, department workloads, and communication efficiency, leading to improved resource allocation and enhanced city service management.
 
-![Drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Scheme%20Change.png)
+![Drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Drawio.png)
 
 ## Project Title: Descriptive data analysis for 311 Inquiry Volume Data Analysis of Government and Finance
 
@@ -309,8 +309,7 @@ A data pipeline was designed using AWS Glue to automate the ETL (Extract, Transf
 
 ![Scheme Change](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Scheme%20Change.png)
 
-![Data Transformation Workflow for 311 Inquiry Volume](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Transformation%20Workflow%20for%20311%20Inquiry%20Volume.png)
-
+![Data Transformation Workflow for 311 Inquiry Volume](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Data%20Transformation%20Workflow%20for%20311%20Inquiry%20Volume%202023%20and%202024.png)
 ### Data Analysis
 Amazon Athena was used to execute SQL queries on the cleaned data stored in Amazon S3. The focus of the analysis was to compute the **Departmental Inquiry Volume** and **Channel Inquiry Usage** for both 2023 and 2024. Metrics such as the total number of inquiries per department and the usage of each communication channel were computed.
 
@@ -337,7 +336,7 @@ Due to limited access to Amazon QuickSight, Excel was used to generate visual re
 ### Data Publishing
 The final results were published on Amazon EC2, making them accessible to stakeholders and the public via virtual servers. This allowed for easy sharing and review of the project’s insights.
 
-![Channel Preference Comparison Between 2022 and 2023](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Channel%20Preference%20Comparison%20Between%202022%20and%202023.png)
+![Channel Preference Comparison Between 2022 and 2023](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Channel%20Preference%20Comparison%20Between%202023%20and%202024.png)
 
 [View Graph Report](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/index.html)
 
