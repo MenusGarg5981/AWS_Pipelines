@@ -230,7 +230,7 @@ Automation was a key feature of this project. AWS Glue pipelines were scheduled 
 ## Introduction
 This project focuses on analyzing the 311 inquiry volume data sourced from OpenData Vancouver under the Government and Finance theme. The 311 service is a vital communication channel connecting city residents with municipal services. By analyzing data from 2023 and 2024, the project aims to identify departments with unusually high or low inquiry volumes and investigate the usage patterns of different communication channels (e.g., Phone, Chat). This analysis offers valuable insights into service demand, department workloads, and communication efficiency, leading to improved resource allocation and enhanced city service management.
 
-![Drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Drawio.png)
+![Drawio](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/Drawio%20updated.png)
 
 ## Project Title: Descriptive data analysis for 311 Inquiry Volume Data Analysis of Government and Finance
 
