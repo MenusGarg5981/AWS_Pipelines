@@ -169,7 +169,7 @@ The S3 buckets were divided into zones:
 - **AWS Glue** was used to build an ETL pipeline to detect sensitive data and enforce governance policies. The ETL pipeline started by loading raw data from the S3 bucket’s raw zone, then transforming and evaluating the data for sensitive information such as PII.
 - I implemented **data masking** and privacy checks by configuring AWS Glue to detect up to **256 types of PII**.
 
-![AWS Glue ETL Data Quality Evaluation with Completeness](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20ETL%20Data%20Quality%20Evaluation%20with%20Completeness.png)
+![AWS Glue ETL Data Quality Evaluation with Completeness](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20ETL%20Data%20Quality%20Evaluation%20with%20Completeness%20Rule.png)
 ![AWS Glue ETL Workflow](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20ETL%20Workflow.png)
 ![AWS Glue Workflow Overview](https://github.com/MenusGarg5981/AWS_Pipelines/blob/main/images/AWS%20Glue%20Workflow%20Overview.png)
 
